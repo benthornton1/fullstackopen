@@ -23,8 +23,7 @@ const App = () => {
         event.preventDefault()
         const person = {
             name: newName,
-            number: newNumber,
-            id: persons.length+1
+            number: newNumber
         }
         const existingPerson = persons.find(eP => eP.name === person.name)
         if (existingPerson) {
@@ -55,6 +54,16 @@ const App = () => {
                     setNewAlert({
                         message: `Added ${person.name}`,
                         type: 'notification'
+                    })
+                    setTimeout(() => {
+                        setNewAlert(null)
+                    }, 5000)
+                })
+                .catch(error => {
+                    console.log(error)
+                    setNewAlert({
+                        message: error.response.data,
+                        type: 'error'
                     })
                     setTimeout(() => {
                         setNewAlert(null)
