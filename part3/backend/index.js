@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const Note = require('./models/note')
+const { response } = require('express')
 
 const requestLogger = (req, res, next) => {
     console.log('Method: ', req.method)
@@ -48,7 +49,7 @@ app.delete('/api/notes/:id', (req, res) => {
 
 app.post('/api/notes', (req, res, next) => {
     const body = req.body
-    
+
     const note = new Note({
         content: body.content,
         important: body.important || false,
