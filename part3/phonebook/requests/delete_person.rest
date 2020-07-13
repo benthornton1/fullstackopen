@@ -1,0 +1,13 @@
+# @name create_person
+POST {{host}}/persons
+Content-Type: application/json
+
+{
+    "name": "test2",
+    "number": "123"
+}
+
+@id = {{create_person.response.headers.Content-Length}}
+
+# @name delete_person
+DELETE {{host}}/persons/12
