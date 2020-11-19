@@ -94,11 +94,9 @@ describe('Blog app', function() {
       })
 
       it('the blogs are ordered according to likes', function() {
-        const blogsDOM = []
         cy.get('.blogLikes').each((el, index) => {
           expect(parseInt(el.text())).to.equal(desiredOrder[index])
         })
-
       })
     })
   })
